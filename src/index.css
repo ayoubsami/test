@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom range slider thumb */
+  input[type='range']::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full bg-teal-500 cursor-pointer shadow-md;
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px theme('colors.teal.500'), 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.15s ease;
+  }
+
+  input[type='range']::-webkit-slider-thumb:hover {
+    @apply bg-teal-400;
+    transform: scale(1.2);
+  }
+
+  input[type='range']::-moz-range-thumb {
+    @apply w-4 h-4 rounded-full bg-teal-500 cursor-pointer border-0;
+  }
+}
+
+@layer components {
+
+  /* Leaflet map fix in dark mode */
+  .dark .leaflet-tile {
+    filter: brightness(0.85) saturate(0.9);
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Mono', monospace;
+  }
+}
